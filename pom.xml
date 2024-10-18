@@ -133,6 +133,12 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.18.0</version>
 		</dependency>
+		<!--		Blob storage configuration-->
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-storage-blob</artifactId>
+			<version>12.28.0</version>
+		</dependency>
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
