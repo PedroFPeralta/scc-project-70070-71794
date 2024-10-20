@@ -40,7 +40,7 @@ public class BlobStorageImpl implements BlobStorage {
 
         try {
             BinaryData data = BinaryData.fromBytes(bytes);
-
+            // Get container client
             BlobContainerClient containerClient = new BlobContainerClientBuilder()
                     .connectionString(storageConnectionString)
                     .containerName(BLOBS_CONTAINER_NAME)
@@ -87,7 +87,33 @@ public class BlobStorageImpl implements BlobStorage {
     }
 
     public Result<Void> delete(String path) {
-        throw new UnsupportedOperationException();
+        if (path == null || path.length() == 0) {
+            return error(BAD_REQUEST);
+        }
+
+        try {
+            // Get container client
+            BlobContainerClient containerClient = new BlobContainerClientBuilder()
+                    .connectionString(storageConnectionString)
+                    .containerName(BLOBS_CONTAINER_NAME)
+                    .buildClient();
+
+            // Get client to blob
+            BlobClient blob = containerClient.getBlobClient(path);
+
+            // Validate if blob exists
+            if (!blob.exists()) {
+                return error(NOT_FOUND);
+            }
+
+            blob.delete();
+
+            return ok();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(INTERNAL_ERROR);
+        }
     }
 
     public Result<byte[]> read(String path) {
