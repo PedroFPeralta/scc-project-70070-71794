@@ -26,7 +26,7 @@ public class BlobStorageImpl implements BlobStorage {
     private static final String BLOBS_CONTAINER_NAME = "shorts";
 
     // TODO: pass this secret to external file
-    String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=sto70070northeurope;AccountKey=i4CoNkgZ+TCU7FoVCTwuv9LDbhmN5oO0FBOLBPdUs3oYT1K4sMpJboZmR1xyZZ6Dx1TVNWdE2lOF+AStK0X8Nw==;EndpointSuffix=core.windows.net";
+    String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=sto7007071794westeurope;AccountKey=/8Wz3K+7w1XEPp4MipR4K/8+ssMwBqFFm0CgSfVq/xziOimChWznm1S1ZxYUxRjMIYZwSl8se/yL+AStdrxecQ==;EndpointSuffix=core.windows.net";
 
     public BlobStorageImpl() {
 
