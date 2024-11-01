@@ -10,7 +10,7 @@
 		<authors>70070-71794</authors>
 	</properties>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -59,7 +59,7 @@
 						<url>http://maven:s3cret@127.0.0.1:8080/manager/text</url>
 						<server>tomcat-docker</server>
 						<update>true</update>
-						<path>/project-70070-71794</path>
+						<path>/scc-project-70070-71794</path>
 					</configuration>
 			</plugin>
 			<!-- Added after Init Version -->
@@ -69,8 +69,8 @@
 				<version>2.13.0</version>
 			    <configuration>
 			        <schemaVersion>v2</schemaVersion>
-			        <resourceGroup>tukano-70070-rg</resourceGroup>
-			        <appName>tukano-70070</appName>
+			        <resourceGroup>rg7007071794-westeurope</resourceGroup>
+			        <appName>app7007071794westeurope</appName>
 			        <pricingTier>F1</pricingTier>
 			        <region>westeurope</region>
 			        <runtime>
@@ -158,6 +158,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>2.18.0</version>
+		</dependency>
+		<!--		Blob storage configuration-->
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-storage-blob</artifactId>
+			<version>12.28.0</version>
 		</dependency>
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
