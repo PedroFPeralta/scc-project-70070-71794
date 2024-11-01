@@ -10,6 +10,7 @@ import jakarta.ws.rs.core.Application;
 import tukano.impl.Token;
 import utils.Args;
 import utils.IP;
+import main.java.utils.Props;
 
 
 public class TukanoRestServer extends Application{
@@ -49,8 +50,10 @@ public class TukanoRestServer extends Application{
 		Args.use(args);
 		
 		Token.setSecret( Args.valueOf("-secret", ""));
-//		Props.load( Args.valueOf("-props", "").split(","));
-		
+//		Props.load( Args.valueOf("-props", "").split(","));	
+		Props.load("azurekeys-region.props");		
+
+
 		new TukanoRestServer().start();
 	}
 }

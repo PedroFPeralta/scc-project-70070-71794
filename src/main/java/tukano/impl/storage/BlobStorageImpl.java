@@ -24,12 +24,13 @@ public class BlobStorageImpl implements BlobStorage {
 
     // TODO: check if this contant need to be from a external file
     private static final String BLOBS_CONTAINER_NAME = "shorts";
+    private static final String BLOB_PROPERTY_NAME = "BlobStoreConnection";
 
     // TODO: pass this secret to external file
-    String storageConnectionString = "";
+    String storageConnectionString;
 
     public BlobStorageImpl() {
-
+        storageConnectionString = System.getProperty(BLOB_PROPERTY_NAME);
     }
 
     @Override
