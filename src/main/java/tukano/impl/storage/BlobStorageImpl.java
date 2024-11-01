@@ -24,12 +24,13 @@ public class BlobStorageImpl implements BlobStorage {
 
     // TODO: check if this contant need to be from a external file
     private static final String BLOBS_CONTAINER_NAME = "shorts";
+    private static final String BLOB_PROPERTY_NAME = "BlobStoreConnection";
 
     // TODO: pass this secret to external file
-    String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=sto7007071794westeurope;AccountKey=/8Wz3K+7w1XEPp4MipR4K/8+ssMwBqFFm0CgSfVq/xziOimChWznm1S1ZxYUxRjMIYZwSl8se/yL+AStdrxecQ==;EndpointSuffix=core.windows.net";
+    String storageConnectionString;
 
     public BlobStorageImpl() {
-
+        storageConnectionString = System.getProperty(BLOB_PROPERTY_NAME);
     }
 
     @Override

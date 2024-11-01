@@ -1,0 +1,5 @@
+# Date : 10/14/24, 10:16 AM
+BlobStoreConnection=DefaultEndpointsProtocol=https;AccountName=dcd5ce8b7adc4a3b9b95;AccountKey=2dskMfm+Ie834ucNgx6tizBLuIvyE11g4jYQceaPXZ9C/juH2tGehBuPjYqqx1yIo5617mOW1D18+AStm05fvg==;EndpointSuffix=core.windows.net
+COSMOSDB_KEY=Y5klYi99KVuT0Fod8vnffcnrE2CUA2teA4ENCkdn1RsvVMW4ugbN7Kwzdai7B6lSQLS3d09ApwpiACDbYOWsXQ==
+COSMOSDB_URL=https://cosmosxxxxx.documents.azure.com:443/
+COSMOSDB_DATABASE=cosmosdbxxxxx
