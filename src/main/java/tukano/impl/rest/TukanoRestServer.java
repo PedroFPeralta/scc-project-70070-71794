@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.Application;
 import tukano.impl.Token;
 import utils.Args;
 import utils.IP;
-import main.java.utils.Props;
+import utils.Props;
 
 
 public class TukanoRestServer extends Application{
