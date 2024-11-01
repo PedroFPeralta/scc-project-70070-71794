@@ -2,14 +2,16 @@
 <hibernate-configuration>
 	<session-factory>
 		<!-- JDBC Database connection settings -->
-		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="connection.url">jdbc:hsqldb:mem:tukano</property>
-		<property name="connection.username">sa</property>
-		<property name="connection.password"></property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+ 		<property name="hibernate.connection.url">jdbc:postgresql://c-tukano.gxwfxcq2g5s76v.postgres.cosmos.azure.com:5432/tukano-backend?user=citus&password=admin-1234&sslmode=require</property>
+		<property name="hibernate.connection.username">citus</property>
+		<property name="hibernate.connection.password">admin-1234</property>
 		<!-- JDBC connection pool settings ... using built-in test pool -->
-		<property name="connection.pool_size">64</property>
+		<property name="hibernate.connection.pool_size">64</property>
 		<!-- Echo the SQL to stdout -->
-		<property name="show_sql">false</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+ 		<property name="hibernate.show_sql">true</property>
+ 		<property name="hibernate.format_sql">true</property>
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
 		<!-- Drop and re-create the database schema on startup -->
