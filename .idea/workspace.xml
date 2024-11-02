@@ -4,47 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="Property File - Azure Deploy test">
+    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="Main - Try to configure Cosmo DB and test something in Azure">
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/CosmosDBLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/azurekeys-region.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/azurekeys-region.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/java/tukano/api/Short.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/java/tukano/api/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/ErrorResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/ErrorResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/OkResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/OkResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Result$ErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Result$ErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Short.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Short.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaBlobs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaBlobs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/data/Following.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/data/Following.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/data/Likes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/data/Likes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestBlobsResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestBlobsResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestShortsResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestShortsResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestUsersResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestUsersResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/CustomLoggingFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/CustomLoggingFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/GenericExceptionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/GenericExceptionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/storage/FilesystemStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/storage/FilesystemStorage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Args.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Args.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Hash.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Hash.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Hex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Hex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Hibernate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Hibernate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/IO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/IO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/IP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/IP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/JSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/JSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Props.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Props.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Queues.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Queues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Random.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Random.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Sleep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Sleep.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TLS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TryCatch$ThrowableSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TryCatch$ThrowableSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TryCatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TryCatch.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +62,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tukano.impl.db" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
@@ -143,7 +113,7 @@
       <workItem from="1729877942896" duration="3700000" />
       <workItem from="1730489529484" duration="6393000" />
       <workItem from="1730561008962" duration="687000" />
-      <workItem from="1730562035385" duration="3365000" />
+      <workItem from="1730562035385" duration="6772000" />
     </task>
     <task id="LOCAL-00001" summary="configs">
       <created>1729257288094</created>
@@ -173,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730492246072</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Main - Try to configure Cosmo DB and test something in Azure">
+      <created>1730565752160</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730565752160</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +184,7 @@
     <MESSAGE value="Blob storage - Write function" />
     <MESSAGE value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
     <MESSAGE value="Property File - Azure Deploy test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Property File - Azure Deploy test" />
+    <MESSAGE value="Main - Try to configure Cosmo DB and test something in Azure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main - Try to configure Cosmo DB and test something in Azure" />
   </component>
 </project>
