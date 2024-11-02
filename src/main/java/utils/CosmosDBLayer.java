@@ -9,6 +9,8 @@ import tukano.api.Result;
 import tukano.api.Result.ErrorCode;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -29,13 +31,14 @@ public class CosmosDBLayer {
 		         .endpoint(CONNECTION_URL)
 		         .key(DB_KEY)
 		         //.directMode()
-		         .gatewayMode()		
+		         .gatewayMode()
 		         // replace by .directMode() for better performance
 		         .consistencyLevel(ConsistencyLevel.SESSION)
 		         .connectionSharingAcrossClientsEnabled(true)
 		         .contentResponseOnWriteEnabled(true)
 		         .buildClient();
 		instance = new CosmosDBLayer( client);
+
 		return instance;
 		
 	}
@@ -78,6 +81,25 @@ public class CosmosDBLayer {
 	public <T> List<T> sql(Class<T> clazz, String queryStr) {
 		CosmosPagedIterable<T> res = container.queryItems(queryStr, new CosmosQueryRequestOptions(), clazz);
 		return res.stream().collect(Collectors.toList());
+	}
+
+	public <T> Result<T> execute(Consumer<CosmosDatabase> proc) {
+		try {
+			proc.accept(db);
+			return Result.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Result.error(ErrorCode.INTERNAL_ERROR);
+		}
+	}
+
+	public <T> Result<T> execute(Function<CosmosDatabase, Result<T>> func) {
+		try {
+			return func.apply(db);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Result.error(ErrorCode.INTERNAL_ERROR);
+		}
 	}
 	
 	<T> Result<T> tryCatch( Supplier<T> supplierFunc) {

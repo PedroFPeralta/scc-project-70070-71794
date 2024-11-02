@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import com.azure.cosmos.CosmosDatabase;
 import org.hibernate.Session;
 
 import tukano.api.Result;
@@ -15,7 +16,6 @@ public class DB {
 	}
 	
 	public static <T> List<T> sql(Class<T> clazz, String fmt, Object ... args) {
-//		return Hibernate.getInstance().sql(String.format(fmt, args), clazz);
 		return CosmosDBLayer.getInstance().sql(clazz, String.format(fmt, args));
 	}
 	
@@ -35,11 +35,11 @@ public class DB {
 		return Result.errorOrValue(CosmosDBLayer.getInstance().insertOne(obj), obj);
 	}
 	
-	public static <T> Result<T> transaction( Consumer<Session> c) {
-		return Hibernate.getInstance().execute( c::accept );
+	public static <T> Result<T> transaction( Consumer<CosmosDatabase> c) {
+		return CosmosDBLayer.getInstance().execute( c::accept );
 	}
 	
-	public static <T> Result<T> transaction( Function<Session, Result<T>> func) {
-		return Hibernate.getInstance().execute( func );
+	public static <T> Result<T> transaction( Function<CosmosDatabase, Result<T>> func) {
+		return CosmosDBLayer.getInstance().execute( func );
 	}
 }

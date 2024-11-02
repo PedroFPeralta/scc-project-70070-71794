@@ -75,12 +75,23 @@ public class JavaShorts implements Shorts {
 			return errorOrResult( okUser( shrt.getOwnerId(), password), user -> {
 				return DB.transaction( hibernate -> {
 
-					hibernate.remove( shrt);
-					
-					var query = format("DELETE Likes l WHERE l.shortId = '%s'", shortId);
-					hibernate.createNativeQuery( query, Likes.class).executeUpdate();
-					
-					JavaBlobs.getInstance().delete(shrt.getBlobUrl(), Token.get() );
+					Result<Short> res = DB.deleteOne(shrt);
+					if (res.error() != null) {
+						return Result.error(res.error());
+					}
+					String likesQuery = format("SELECT * FROM c WHERE c.shortId = '%s' AND c.type = 'like'", shortId);
+					List<Short> likesList = DB.sql(likesQuery, Short.class);
+//					// var query = format("DELETE Likes l WHERE l.shortId = '%s'", shortId);
+//					// hibernate.createNativeQuery( query, Likes.class).executeUpdate();
+					for (Short like : likesList) {
+						Result<Short> deleteLikeRes = DB.deleteOne(like);
+						if (deleteLikeRes.error() != null) {
+							return Result.error(deleteLikeRes.error());
+						}
+					}
+//
+					JavaBlobs.getInstance().delete(shrt.getBlobUrl(), Token.get());
+					return Result.ok();
 				});
 			});	
 		});
@@ -171,18 +182,36 @@ public class JavaShorts implements Shorts {
 			return error(FORBIDDEN);
 		
 		return DB.transaction( (hibernate) -> {
-						
-			//delete shorts
-			var query1 = format("DELETE Short s WHERE s.ownerId = '%s'", userId);		
-			hibernate.createQuery(query1, Short.class).executeUpdate();
-			
-			//delete follows
-			var query2 = format("DELETE Following f WHERE f.follower = '%s' OR f.followee = '%s'", userId, userId);		
-			hibernate.createQuery(query2, Following.class).executeUpdate();
-			
-			//delete likes
-			var query3 = format("DELETE Likes l WHERE l.ownerId = '%s' OR l.userId = '%s'", userId, userId);		
-			hibernate.createQuery(query3, Likes.class).executeUpdate();
+
+			String deleteShortsQuery = format("SELECT * FROM c WHERE c.ownerId = '%s'", userId);
+			List<Short> shortsList = DB.sql(deleteShortsQuery, Short.class);
+			for (Short shortObj : shortsList) {
+				Result<Short> deleteShortRes = DB.deleteOne(shortObj);
+				if (deleteShortRes.error() != null) {
+					return Result.error(deleteShortRes.error());
+				}
+			}
+			// delete follows
+			String deleteFollowsQuery = format(
+					"SELECT * FROM c WHERE c.follower = '%s' OR c.followee = '%s' AND c.type ='following'", userId,
+					userId);
+			List<Short> followsList = DB.sql(deleteFollowsQuery, Short.class);
+			for (Short follow : followsList) {
+				Result<Short> deleteFollowRes = DB.deleteOne(follow);
+				if (deleteFollowRes.error() != null) {
+					return Result.error(deleteFollowRes.error());
+				}
+			}
+			// delete likes
+			String deleteLikesQuery = format("SELECT * FROM c WHERE c.userId = '%s' AND c.type = 'like'", userId);
+			List<Short> likesList = DB.sql(deleteLikesQuery, Short.class);
+			for (Short like : likesList) {
+				Result<Short> deleteLikeRes = DB.deleteOne(like);
+				if (deleteLikeRes.error() != null) {
+					return Result.error(deleteLikeRes.error());
+				}
+			}
+			return Result.ok();
 			
 		});
 	}

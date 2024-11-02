@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="Main - Try to configure Cosmo DB and test something in Azure">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/CosmosDBLayer.java" afterDir="false" />
+    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="CosmoDB2 - Creation of CosmoDB class following the lab3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaShorts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CosmosDBLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CosmosDBLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DB.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="CosmosDB" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,7 +117,7 @@
       <workItem from="1729877942896" duration="3700000" />
       <workItem from="1730489529484" duration="6393000" />
       <workItem from="1730561008962" duration="687000" />
-      <workItem from="1730562035385" duration="6772000" />
+      <workItem from="1730562035385" duration="10684000" />
     </task>
     <task id="LOCAL-00001" summary="configs">
       <created>1729257288094</created>
@@ -150,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730565752160</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="CosmoDB2 - Creation of CosmoDB class following the lab3">
+      <created>1730569102601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730569102601</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +196,7 @@
     <MESSAGE value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
     <MESSAGE value="Property File - Azure Deploy test" />
     <MESSAGE value="Main - Try to configure Cosmo DB and test something in Azure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Main - Try to configure Cosmo DB and test something in Azure" />
+    <MESSAGE value="CosmoDB2 - Creation of CosmoDB class following the lab3" />
+    <option name="LAST_COMMIT_MESSAGE" value="CosmoDB2 - Creation of CosmoDB class following the lab3" />
   </component>
 </project>

@@ -1,6 +1,8 @@
 package tukano.impl.rest;
 
 import java.net.URI;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
@@ -22,13 +24,32 @@ public class TukanoRestServer extends Application{
 	public static final int PORT = 8080;
 
 	public static String serverURI;
-			
+	private Set<Object> singletons = new HashSet<>();
+	private Set<Class<?>> resources = new HashSet<>();
+
 	static {
 		System.setProperty("java.util.logging.SimpleFormatter.format", "%4$s: %5$s");
 	}
 	
 	protected TukanoRestServer() {
+
 		serverURI = String.format(SERVER_BASE_URI, IP.hostname(), PORT);
+
+		resources.add(RestBlobsResource.class);
+		resources.add(RestUsersResource.class);
+		resources.add(RestShortsResource.class);
+
+		Props.load("azurekeys-region.props");
+	}
+
+	@Override
+	public Set<Class<?>> getClasses() {
+		return resources;
+	}
+
+	@Override
+	public Set<Object> getSingletons() {
+		return singletons;
 	}
 
 
