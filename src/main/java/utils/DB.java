@@ -12,7 +12,7 @@ import tukano.api.Result;
 public class DB {
 
 	public static <T> List<T> sql(String query, Class<T> clazz) {
-		return Hibernate.getInstance().sql(query, clazz);
+		return CosmosDBLayer.getInstance().sql(clazz, query);
 	}
 	
 	public static <T> List<T> sql(Class<T> clazz, String fmt, Object ... args) {
