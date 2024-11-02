@@ -69,10 +69,10 @@
 				<version>2.13.0</version>
 			    <configuration>
 			        <schemaVersion>v2</schemaVersion>
-			        <resourceGroup>rg7007071794-westeurope</resourceGroup>
-			        <appName>app7007071794westeurope</appName>
+			        <resourceGroup>rg70070-northeurope</resourceGroup>
+			        <appName>app7007071794northeurope</appName>
 			        <pricingTier>F1</pricingTier>
-			        <region>westeurope</region>
+			        <region>northeurope</region>
 			        <runtime>
 			            <os>Linux</os>
 			            <javaVersion>Java 17</javaVersion>
