@@ -70,7 +70,7 @@
 			    <configuration>
 			        <schemaVersion>v2</schemaVersion>
 			        <resourceGroup>rg70070-northeurope</resourceGroup>
-			        <appName>app7007071794northeurope</appName>
+			        <appName>tukano-backend-7007071794</appName>
 			        <pricingTier>F1</pricingTier>
 			        <region>northeurope</region>
 			        <runtime>
@@ -103,7 +103,11 @@
         	<artifactId>jakarta.ws.rs-api</artifactId>
         	<version>3.0.0</version>
     	</dependency>
-
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>5.2.0</version>
+		</dependency>
     	<dependency>
         	<groupId>org.glassfish.jersey.core</groupId>
         	<artifactId>jersey-client</artifactId>

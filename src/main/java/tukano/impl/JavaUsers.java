@@ -16,6 +16,9 @@ import tukano.api.Result;
 import tukano.api.User;
 import tukano.api.Users;
 import utils.DB;
+import utils.JSON;
+import utils.RedisCache;
+import redis.clients.jedis.Jedis;
 
 public class JavaUsers implements Users {
 	
@@ -38,7 +41,15 @@ public class JavaUsers implements Users {
 		if( badUserInfo( user ) )
 				return error(BAD_REQUEST);
 
+		try (Jedis jedis = RedisCache.getCachePool().getResource()){
+				var key = "users: " + user.getUserId();
+				var value = JSON.encode(user);
+				jedis.set(key, value);
+				jedis.expire(key, 3600);
+			}		
 		return errorOrValue( DB.insertOne( user), user.getUserId() );
+
+		
 	}
 
 	@Override
@@ -48,6 +59,12 @@ public class JavaUsers implements Users {
 		if (userId == null)
 			return error(BAD_REQUEST);
 		
+		try (Jedis jedis = RedisCache.getCachePool().getResource()){
+			var key = "users: " + userId;
+			var user = jedis.get(key);
+			jedis.set(key, user);
+			jedis.expire(key, 3600);
+		}		
 		return validatedUserOrError( DB.getOne( userId, User.class), pwd);
 	}
 
