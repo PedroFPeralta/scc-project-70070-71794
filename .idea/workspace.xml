@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="CosmoDB2 - Trying new things to get some response from URL">
+    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="CosmoDB2 - More and More">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/api/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/api/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DB.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="blobStorage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,29 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pedri/Documents/Escola/Mestrado/SCC/scc2425-lab5&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/pedri/Documents/Escola/Mestrado/SCC/Projeto/scc-project-70070-71794",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="tukano.impl.db" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
@@ -111,9 +108,8 @@
       <workItem from="1729257135931" duration="6599000" />
       <workItem from="1729280161631" duration="1254000" />
       <workItem from="1729877942896" duration="3700000" />
-      <workItem from="1730489529484" duration="6393000" />
-      <workItem from="1730561008962" duration="687000" />
-      <workItem from="1730562035385" duration="13166000" />
+      <workItem from="1730650242794" duration="20000" />
+      <workItem from="1730650525495" duration="921000" />
     </task>
     <task id="LOCAL-00001" summary="configs">
       <created>1729257288094</created>
@@ -136,35 +132,7 @@
       <option name="project" value="LOCAL" />
       <updated>1729266320691</updated>
     </task>
-    <task id="LOCAL-00004" summary="Property File - Azure Deploy test">
-      <created>1730492246072</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1730492246072</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Main - Try to configure Cosmo DB and test something in Azure">
-      <created>1730565752160</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1730565752160</updated>
-    </task>
-    <task id="LOCAL-00006" summary="CosmoDB2 - Creation of CosmoDB class following the lab3">
-      <created>1730569102601</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1730569102601</updated>
-    </task>
-    <task id="LOCAL-00007" summary="CosmoDB2 - Trying new things to get some response from URL">
-      <created>1730574329696</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1730574329696</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +149,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="CosmosDB" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -197,10 +165,6 @@
     <MESSAGE value="configs" />
     <MESSAGE value="Blob storage - Write function" />
     <MESSAGE value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
-    <MESSAGE value="Property File - Azure Deploy test" />
-    <MESSAGE value="Main - Try to configure Cosmo DB and test something in Azure" />
-    <MESSAGE value="CosmoDB2 - Creation of CosmoDB class following the lab3" />
-    <MESSAGE value="CosmoDB2 - Trying new things to get some response from URL" />
-    <option name="LAST_COMMIT_MESSAGE" value="CosmoDB2 - Trying new things to get some response from URL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
   </component>
 </project>

@@ -11,6 +11,8 @@ import tukano.impl.Token;
 public class User {
 	
 	@Id
+	private String id;
+
 	private String userId;
 	private String pwd;
 	private String email;	
@@ -23,6 +25,15 @@ public class User {
 		this.email = email;
 		this.userId = userId;
 		this.displayName = displayName;
+		this.id = userId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getUserId() {
