@@ -45,7 +45,7 @@ public class JavaUsers implements Users {
 				var key = "users: " + user.getUserId();
 				var value = JSON.encode(user);
 				jedis.set(key, value);
-				jedis.expire(key, 3600);
+				//jedis.expire(key, 3600);
 			}		
 		return errorOrValue( DB.insertOne( user), user.getUserId() );
 
@@ -62,9 +62,12 @@ public class JavaUsers implements Users {
 		try (Jedis jedis = RedisCache.getCachePool().getResource()){
 			var key = "users: " + userId;
 			var user = jedis.get(key);
-			jedis.set(key, user);
-			jedis.expire(key, 3600);
-		}		
+
+			if (user != null){
+				return validatedUserOrError(Result.ok(JSON.decode(user, User.class)), pwd);
+			}
+		}
+			
 		return validatedUserOrError( DB.getOne( userId, User.class), pwd);
 	}
 
