@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="CosmoDB2 - First status 200 OK">
+    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="Shorts - Creating shorts with 200 OK + CosmoDBLayer change containers Dinamics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/api/Short.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/api/Short.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaShorts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CosmosDBLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CosmosDBLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Short.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Short.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730651749343</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Shorts - Creating shorts with 200 OK + CosmoDBLayer change containers Dinamics">
+      <created>1730659275116</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730659275116</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +176,7 @@
     <MESSAGE value="Blob storage - Write function" />
     <MESSAGE value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
     <MESSAGE value="CosmoDB2 - First status 200 OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="CosmoDB2 - First status 200 OK" />
+    <MESSAGE value="Shorts - Creating shorts with 200 OK + CosmoDBLayer change containers Dinamics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shorts - Creating shorts with 200 OK + CosmoDBLayer change containers Dinamics" />
   </component>
 </project>

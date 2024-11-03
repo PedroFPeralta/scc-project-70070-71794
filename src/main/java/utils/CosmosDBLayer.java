@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 
 
 public class CosmosDBLayer {
-	private static final String CONNECTION_URL = "https://cosmos70070northeurope.documents.azure.com:443/"; // replace with your own
-	private static final String DB_KEY = "u9d2bwdJtw12C6mRwtjvWBw0XeSxb41NqUPXON6mKir7aq4phn2ukBshRHn2dF2i5GQoTYhT8KjAACDb0j612g==";
-	private static final String DB_NAME = "cosmosdb70070";
+	private static final String CONNECTION_URL = Props.get("COSMOSDB_URL", "");
+	private static final String DB_KEY = Props.get("COSMOSDB_KEY", "");
+	private static final String DB_NAME = Props.get("COSMOSDB_DATABASE", "");
 	
 	private static CosmosDBLayer instance;
 	private CosmosClient client;
@@ -135,6 +135,9 @@ public class CosmosDBLayer {
 		switch (clazz.getSimpleName()) {
 			case "User" -> containerName = "users";
 			case "Short" -> containerName = "shorts";
+			case "String" -> containerName = "shorts";
+			case "Integer" -> containerName = "shorts";
+			case "Long" -> containerName = "shorts";
 			default -> throw new IllegalArgumentException("Unknown class: " + clazz.getName());
 		}
 
