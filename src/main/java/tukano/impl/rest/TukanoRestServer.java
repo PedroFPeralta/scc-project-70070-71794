@@ -9,6 +9,7 @@ import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import jakarta.ws.rs.core.Application;
+import tukano.impl.Token;
 import utils.IP;
 import utils.Props;
 
@@ -38,6 +39,9 @@ public class TukanoRestServer extends Application{
 		resources.add(RestShortsResource.class);
 
 		Props.load("azurekeys-region.props");
+
+		Token.setSecret("secret");
+
 	}
 
 	@Override
@@ -62,6 +66,8 @@ public class TukanoRestServer extends Application{
 		JdkHttpServerFactory.createHttpServer( URI.create(serverURI.replace(IP.hostname(), INETADDR_ANY)), config);
 
 		Log.info(String.format("Tukano Server ready @ %s\n",  serverURI));
+
+//		Token.setSecret("secret");
 	}
 	
 	

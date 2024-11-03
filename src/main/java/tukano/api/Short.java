@@ -20,6 +20,7 @@ public class Short {
 	
 	@Id
 	String shortId;
+	String id;
 	String ownerId;
 	String blobUrl;
 	long timestamp;
@@ -34,18 +35,28 @@ public class Short {
 		this.blobUrl = blobUrl;
 		this.timestamp = timestamp;
 		this.totalLikes = totalLikes;
+		this.id = shortId;
 	}
 
 	public Short(String shortId, String ownerId, String blobUrl) {
 		this( shortId, ownerId, blobUrl, System.currentTimeMillis(), 0);
 	}
-	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getShortId() {
 		return shortId;
 	}
 
 	public void setShortId(String shortId) {
 		this.shortId = shortId;
+		this.id = shortId;
 	}
 
 	public String getOwnerId() {

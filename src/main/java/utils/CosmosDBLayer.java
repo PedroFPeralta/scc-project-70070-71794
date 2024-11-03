@@ -2,6 +2,7 @@ package utils;
 
 import com.azure.cosmos.*;
 import com.azure.cosmos.models.CosmosItemRequestOptions;
+import com.azure.cosmos.models.CosmosItemResponse;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.azure.cosmos.models.PartitionKey;
 import com.azure.cosmos.util.CosmosPagedIterable;
@@ -19,73 +20,77 @@ public class CosmosDBLayer {
 	private static final String CONNECTION_URL = "https://cosmos70070northeurope.documents.azure.com:443/"; // replace with your own
 	private static final String DB_KEY = "u9d2bwdJtw12C6mRwtjvWBw0XeSxb41NqUPXON6mKir7aq4phn2ukBshRHn2dF2i5GQoTYhT8KjAACDb0j612g==";
 	private static final String DB_NAME = "cosmosdb70070";
-	private static final String CONTAINER = "users";
 	
 	private static CosmosDBLayer instance;
-
-	public static synchronized CosmosDBLayer getInstance() {
-		if( instance != null)
-			return instance;
-
-		CosmosClient client = new CosmosClientBuilder()
-		         .endpoint(CONNECTION_URL)
-		         .key(DB_KEY)
-		         //.directMode()
-		         .gatewayMode()
-		         // replace by .directMode() for better performance
-		         .consistencyLevel(ConsistencyLevel.SESSION)
-		         .connectionSharingAcrossClientsEnabled(true)
-		         .contentResponseOnWriteEnabled(true)
-		         .buildClient();
-		instance = new CosmosDBLayer( client);
-
-		return instance;
-		
-	}
-	
 	private CosmosClient client;
-	private CosmosDatabase db;
-	private CosmosContainer container;
-	
-	public CosmosDBLayer(CosmosClient client) {
-		this.client = client;
+	private CosmosDatabase cosmosDatabase;
+
+
+	private CosmosDBLayer() {
+		try {
+			client = new CosmosClientBuilder()
+					.endpoint(CONNECTION_URL)
+					.key(DB_KEY)
+					//.directMode()
+					.gatewayMode()
+					.consistencyLevel(ConsistencyLevel.SESSION)
+					.connectionSharingAcrossClientsEnabled(true)
+					.contentResponseOnWriteEnabled(true)
+					.buildClient();
+
+			cosmosDatabase = client.getDatabase(DB_NAME);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
-	private synchronized void init() {
-		if( db != null)
-			return;
-		db = client.getDatabase(DB_NAME);
-		container = db.getContainer(CONTAINER);
+
+	synchronized public static CosmosDBLayer getInstance() {
+		if (instance == null)
+			instance = new CosmosDBLayer();
+		return instance;
 	}
+
 
 	public void close() {
 		client.close();
 	}
 	
 	public <T> Result<T> getOne(String id, Class<T> clazz) {
-		return tryCatch( () -> container.readItem(id, new PartitionKey(id), clazz).getItem());
+		CosmosContainer auxContainer = getContainer(clazz);
+		return tryCatch( () -> auxContainer.readItem(id, new PartitionKey(id), clazz).getItem());
 	}
 	
 	public <T> Result<?> deleteOne(T obj) {
-		return tryCatch( () -> container.deleteItem(obj, new CosmosItemRequestOptions()).getItem());
+		CosmosContainer cosmosContainer = getContainer(obj.getClass());
+		return tryCatch( () -> cosmosContainer.deleteItem(obj, new CosmosItemRequestOptions()).getItem());
 	}
 	
 	public <T> Result<T> updateOne(T obj) {
-		return tryCatch( () -> container.upsertItem(obj).getItem());
+		CosmosContainer cosmosContainer = getContainer(obj.getClass());
+
+		return tryCatch( () -> cosmosContainer.upsertItem(obj).getItem());
 	}
 	
 	public <T> Result<T> insertOne( T obj) {
-		return tryCatch( () -> container.createItem(obj).getItem());
+		try {
+			CosmosContainer cosmosContainer = getContainer(obj.getClass());
+			cosmosContainer.createItem(obj);
+			return Result.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Result.error(ErrorCode.INTERNAL_ERROR);
+		}
 	}
 	
 	public <T> List<T> sql(Class<T> clazz, String queryStr) {
-		CosmosPagedIterable<T> res = container.queryItems(queryStr, new CosmosQueryRequestOptions(), clazz);
+		CosmosContainer cosmosContainer = getContainer(clazz);
+		CosmosPagedIterable<T> res = cosmosContainer.queryItems(queryStr, new CosmosQueryRequestOptions(), clazz);
 		return res.stream().collect(Collectors.toList());
 	}
 
 	public <T> Result<T> execute(Consumer<CosmosDatabase> proc) {
 		try {
-			proc.accept(db);
+			proc.accept(cosmosDatabase);
 			return Result.ok();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,7 +100,7 @@ public class CosmosDBLayer {
 
 	public <T> Result<T> execute(Function<CosmosDatabase, Result<T>> func) {
 		try {
-			return func.apply(db);
+			return func.apply(cosmosDatabase);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Result.error(ErrorCode.INTERNAL_ERROR);
@@ -104,7 +109,7 @@ public class CosmosDBLayer {
 	
 	<T> Result<T> tryCatch( Supplier<T> supplierFunc) {
 		try {
-			init();
+			//init();
 			return Result.ok(supplierFunc.get());			
 		} catch( CosmosException ce ) {
 			//ce.printStackTrace();
@@ -122,5 +127,17 @@ public class CosmosDBLayer {
 		case 409 -> ErrorCode.CONFLICT;
 		default -> ErrorCode.INTERNAL_ERROR;
 		};
+	}
+
+	private CosmosContainer getContainer(Class<?> clazz) {
+		String containerName;
+
+		switch (clazz.getSimpleName()) {
+			case "User" -> containerName = "users";
+			case "Short" -> containerName = "shorts";
+			default -> throw new IllegalArgumentException("Unknown class: " + clazz.getName());
+		}
+
+		return cosmosDatabase.getContainer(containerName);
 	}
 }

@@ -29,6 +29,7 @@ public class JavaShorts implements Shorts {
 	private static Logger Log = Logger.getLogger(JavaShorts.class.getName());
 	
 	private static Shorts instance;
+
 	
 	synchronized public static Shorts getInstance() {
 		if( instance == null )
@@ -49,7 +50,10 @@ public class JavaShorts implements Shorts {
 			var blobUrl = format("%s/%s/%s", TukanoRestServer.serverURI, Blobs.NAME, shortId); 
 			var shrt = new Short(shortId, userId, blobUrl);
 
-			return errorOrValue(DB.insertOne(shrt), s -> s.copyWithLikes_And_Token(0));
+			shrt.setShortId(shortId);
+
+			var result = DB.insertOne(shrt);
+			return result;
 		});
 	}
 
