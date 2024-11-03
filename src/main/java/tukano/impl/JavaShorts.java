@@ -23,6 +23,9 @@ import tukano.impl.data.Following;
 import tukano.impl.data.Likes;
 import tukano.impl.rest.TukanoRestServer;
 import utils.DB;
+import utils.JSON;
+import utils.RedisCache;
+import redis.clients.jedis.Jedis;
 
 public class JavaShorts implements Shorts {
 
@@ -48,7 +51,13 @@ public class JavaShorts implements Shorts {
 			var shortId = format("%s+%s", userId, UUID.randomUUID());
 			var blobUrl = format("%s/%s/%s", TukanoRestServer.serverURI, Blobs.NAME, shortId); 
 			var shrt = new Short(shortId, userId, blobUrl);
-
+			try (Jedis jedis = RedisCache.getCachePool().getResource()){
+				var key = "shorts:" + shortId;
+				var value = JSON.encode(shrt);
+				jedis.set(key, value);
+				//jedis.expire(key, 3600);
+			}
+			
 			return errorOrValue(DB.insertOne(shrt), s -> s.copyWithLikes_And_Token(0));
 		});
 	}
@@ -62,6 +71,15 @@ public class JavaShorts implements Shorts {
 
 		var query = format("SELECT count(*) FROM Likes l WHERE l.shortId = '%s'", shortId);
 		var likes = DB.sql(query, Long.class);
+
+		try (Jedis jedis = RedisCache.getCachePool().getResource()){
+			var key = "shorts: " + shortId;
+			var shrt = jedis.get(key);
+
+			if (shrt != null){
+				return Result.ok(JSON.decode(shrt, Short.class));
+			}
+		}
 		return errorOrValue( getOne(shortId, Short.class), shrt -> shrt.copyWithLikes_And_Token( likes.get(0)));
 	}
 
