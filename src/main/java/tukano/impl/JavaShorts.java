@@ -80,15 +80,8 @@ public class JavaShorts implements Shorts {
 						return Result.error(res.error());
 					}
 					String likesQuery = format("SELECT * FROM c WHERE c.shortId = '%s' AND c.type = 'like'", shortId);
-					List<Short> likesList = DB.sql(likesQuery, Short.class);
-//					// var query = format("DELETE Likes l WHERE l.shortId = '%s'", shortId);
-//					// hibernate.createNativeQuery( query, Likes.class).executeUpdate();
-					for (Short like : likesList) {
-						Result<Short> deleteLikeRes = DB.deleteOne(like);
-						if (deleteLikeRes.error() != null) {
-							return Result.error(deleteLikeRes.error());
-						}
-					}
+					Result<Void> deleteLikeRes = deleteCascade(likesQuery);
+					if (deleteLikeRes != null) return deleteLikeRes;
 //
 					JavaBlobs.getInstance().delete(shrt.getBlobUrl(), Token.get());
 					return Result.ok();
@@ -184,36 +177,32 @@ public class JavaShorts implements Shorts {
 		return DB.transaction( (hibernate) -> {
 
 			String deleteShortsQuery = format("SELECT * FROM c WHERE c.ownerId = '%s'", userId);
-			List<Short> shortsList = DB.sql(deleteShortsQuery, Short.class);
-			for (Short shortObj : shortsList) {
-				Result<Short> deleteShortRes = DB.deleteOne(shortObj);
-				if (deleteShortRes.error() != null) {
-					return Result.error(deleteShortRes.error());
-				}
-			}
+			Result<Void> deleteShortRes = deleteCascade(deleteShortsQuery);
+			if (deleteShortRes != null) return deleteShortRes;
 			// delete follows
 			String deleteFollowsQuery = format(
 					"SELECT * FROM c WHERE c.follower = '%s' OR c.followee = '%s' AND c.type ='following'", userId,
 					userId);
-			List<Short> followsList = DB.sql(deleteFollowsQuery, Short.class);
-			for (Short follow : followsList) {
-				Result<Short> deleteFollowRes = DB.deleteOne(follow);
-				if (deleteFollowRes.error() != null) {
-					return Result.error(deleteFollowRes.error());
-				}
-			}
+			Result<Void> deleteFollowRes = deleteCascade(deleteFollowsQuery);
+			if (deleteFollowRes != null) return deleteFollowRes;
 			// delete likes
 			String deleteLikesQuery = format("SELECT * FROM c WHERE c.userId = '%s' AND c.type = 'like'", userId);
-			List<Short> likesList = DB.sql(deleteLikesQuery, Short.class);
-			for (Short like : likesList) {
-				Result<Short> deleteLikeRes = DB.deleteOne(like);
-				if (deleteLikeRes.error() != null) {
-					return Result.error(deleteLikeRes.error());
-				}
-			}
+			Result<Void> deleteLikeRes = deleteCascade(deleteLikesQuery);
+			if (deleteLikeRes != null) return deleteLikeRes;
 			return Result.ok();
 			
 		});
 	}
-	
+
+	private Result<Void> deleteCascade(String deleteFollowsQuery) {
+		List<Short> followsList = DB.sql(deleteFollowsQuery, Short.class);
+		for (Short follow : followsList) {
+			Result<Short> deleteFollowRes = DB.deleteOne(follow);
+			if (deleteFollowRes.error() != null) {
+				return Result.error(deleteFollowRes.error());
+			}
+		}
+		return null;
+	}
+
 }

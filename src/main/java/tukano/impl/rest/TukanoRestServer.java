@@ -76,7 +76,4 @@ public class TukanoRestServer extends Application{
 //		new TukanoRestServer().start();
 //	}
 
-	public static void main(String[] args) throws Exception {
-		return;
-	}
 }

@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="CosmoDB2 - More and More">
+    <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="CosmoDB2 - First status 200 OK">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/api/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/api/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaShorts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DB.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/Users/pedri/Documents/Escola/Mestrado/SCC/Projeto/scc-project-70070-71794",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -109,7 +106,7 @@
       <workItem from="1729280161631" duration="1254000" />
       <workItem from="1729877942896" duration="3700000" />
       <workItem from="1730650242794" duration="20000" />
-      <workItem from="1730650525495" duration="921000" />
+      <workItem from="1730650525495" duration="2137000" />
     </task>
     <task id="LOCAL-00001" summary="configs">
       <created>1729257288094</created>
@@ -132,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1729266320691</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CosmoDB2 - First status 200 OK">
+      <created>1730651749343</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730651749343</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +169,7 @@
     <MESSAGE value="configs" />
     <MESSAGE value="Blob storage - Write function" />
     <MESSAGE value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Blob storage - Write function - Added validation to verify if Blob arleady exists in Blob storage" />
+    <MESSAGE value="CosmoDB2 - First status 200 OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="CosmoDB2 - First status 200 OK" />
   </component>
 </project>
