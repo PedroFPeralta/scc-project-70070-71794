@@ -1,11 +1,12 @@
 package tukano.impl;
 
 import static java.lang.String.format;
-import static tukano.api.Result.ErrorCode.*;
 import static tukano.api.Result.error;
 import static tukano.api.Result.errorOrResult;
 import static tukano.api.Result.errorOrValue;
 import static tukano.api.Result.ok;
+import static tukano.api.Result.ErrorCode.BAD_REQUEST;
+import static tukano.api.Result.ErrorCode.FORBIDDEN;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -15,6 +16,9 @@ import tukano.api.Result;
 import tukano.api.User;
 import tukano.api.Users;
 import utils.DB;
+import utils.JSON;
+import utils.RedisCache;
+import redis.clients.jedis.Jedis;
 
 public class JavaUsers implements Users {
 	
@@ -37,7 +41,15 @@ public class JavaUsers implements Users {
 		if( badUserInfo( user ) )
 				return error(BAD_REQUEST);
 
+		try (Jedis jedis = RedisCache.getCachePool().getResource()){
+				var key = "users: " + user.getUserId();
+				var value = JSON.encode(user);
+				jedis.set(key, value);
+				//jedis.expire(key, 3600);
+			}		
 		return errorOrValue( DB.insertOne( user), user.getUserId() );
+
+		
 	}
 
 	@Override
@@ -47,6 +59,15 @@ public class JavaUsers implements Users {
 		if (userId == null)
 			return error(BAD_REQUEST);
 		
+		try (Jedis jedis = RedisCache.getCachePool().getResource()){
+			var key = "users: " + userId;
+			var user = jedis.get(key);
+
+			if (user != null){
+				return validatedUserOrError(Result.ok(JSON.decode(user, User.class)), pwd);
+			}
+		}
+			
 		return validatedUserOrError( DB.getOne( userId, User.class), pwd);
 	}
 
