@@ -1,2 +1,9 @@
 # scc-project-70070-71794
-This repository will be used to save the project for SCC class
+Name1 : Pedro Filipe Peralta
+Number1 : 70070
+
+Name2: Tsimafei Nestsiarau
+Number2: 71794
+Email2: t.nestsiarau@campus.fct.unl.pt
+
+Note: there're two main branches: CosmosDB_NoSQL-with-Redis and CosmosDB_PostgreSQL-with-Redis, the main difference between them is database used (folliwing the names)
