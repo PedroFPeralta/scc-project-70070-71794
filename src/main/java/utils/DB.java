@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import com.azure.cosmos.CosmosDatabase;
 import org.hibernate.Session;
 
 import tukano.api.Result;
@@ -12,34 +11,35 @@ import tukano.api.Result;
 public class DB {
 
 	public static <T> List<T> sql(String query, Class<T> clazz) {
-		return CosmosDBLayer.getInstance().sql(clazz, query);
+		return Hibernate.getInstance().sql(query, clazz);
 	}
 	
 	public static <T> List<T> sql(Class<T> clazz, String fmt, Object ... args) {
-		return CosmosDBLayer.getInstance().sql(clazz, String.format(fmt, args));
+		return Hibernate.getInstance().sql(String.format(fmt, args), clazz);
 	}
 	
 	public static <T> Result<T> getOne(String id, Class<T> clazz) {
-		return CosmosDBLayer.getInstance().getOne(id, clazz);
+		return Hibernate.getInstance().getOne(id, clazz);
 	}
 	
 	public static <T> Result<T> deleteOne(T obj) {
-		return (Result<T>) CosmosDBLayer.getInstance().deleteOne(obj);
+		return (Result<T>) Hibernate.getInstance().deleteOne(obj);
 	}
 	
 	public static <T> Result<T> updateOne(T obj) {
-		return CosmosDBLayer.getInstance().updateOne(obj);
+		return Hibernate.getInstance().updateOne(obj);
 	}
 	
 	public static <T> Result<T> insertOne( T obj) {
-		return Result.errorOrValue(CosmosDBLayer.getInstance().insertOne(obj), obj);
+		return Result.errorOrValue(Hibernate.getInstance().persistOne(obj), obj);
 	}
 	
-	public static <T> Result<T> transaction( Consumer<CosmosDatabase> c) {
-		return CosmosDBLayer.getInstance().execute( c::accept );
+	public static <T> Result<T> transaction( Consumer<Session> c) {
+		return Hibernate.getInstance().execute( c::accept);
+		//execute( c::accept );
 	}
 	
-	public static <T> Result<T> transaction( Function<CosmosDatabase, Result<T>> func) {
-		return CosmosDBLayer.getInstance().execute( func );
+	public static <T> Result<T> transaction( Function<Session, Result<T>> func) {
+		return Hibernate.getInstance().execute( func );
 	}
 }
