@@ -55,7 +55,7 @@ public class JavaShorts implements Shorts {
 
 			shrt.setShortId(shortId);
 
-			var result = DB.insertOne(shrt);
+			
 
 			try (Jedis jedis = RedisCache.getCachePool().getResource()){
 				var key = "shorts:" + shortId;
@@ -63,6 +63,7 @@ public class JavaShorts implements Shorts {
 				jedis.set(key, value);
 				//jedis.expire(key, 3600);
 			}
+			var result = DB.insertOne(shrt);
 			return result;
 		});
 	}
