@@ -1,6 +1,7 @@
 package tukano.impl;
 
 import static java.lang.String.format;
+import static tukano.api.Result.ErrorCode.*;
 import static tukano.api.Result.error;
 import static tukano.api.Result.errorOrResult;
 import static tukano.api.Result.errorOrValue;
@@ -46,10 +47,8 @@ public class JavaUsers implements Users {
 				var value = JSON.encode(user);
 				jedis.set(key, value);
 				//jedis.expire(key, 3600);
-			}		
+			}
 		return errorOrValue( DB.insertOne( user), user.getUserId() );
-
-		
 	}
 
 	@Override
@@ -67,7 +66,7 @@ public class JavaUsers implements Users {
 				return validatedUserOrError(Result.ok(JSON.decode(user, User.class)), pwd);
 			}
 		}
-			
+
 		return validatedUserOrError( DB.getOne( userId, User.class), pwd);
 	}
 
@@ -77,6 +76,14 @@ public class JavaUsers implements Users {
 
 		if (badUpdateUserInfo(userId, pwd, other))
 			return error(BAD_REQUEST);
+
+		try (Jedis jedis = RedisCache.getCachePool().getResource()){
+			var key = "users: " + userId;
+			var user = jedis.get(key);
+			if (user != null){
+				return validatedUserOrError(Result.ok(JSON.decode(user, User.class)), pwd);
+			}
+		}
 
 		return errorOrResult( validatedUserOrError(DB.getOne( userId, User.class), pwd), user -> DB.updateOne( user.updateFrom(other)));
 	}

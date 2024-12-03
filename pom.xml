@@ -67,7 +67,7 @@
 						<url>http://maven:s3cret@127.0.0.1:8080/manager/text</url>
 						<server>tomcat-docker</server>
 						<update>true</update>
-						<path>/tukane</path>
+						<path>/tukano</path>
 						<username>maven</username>
 						<password>s3cret</password>
 					</configuration>
@@ -207,6 +207,18 @@
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
+		</dependency>
+
+<!--		Authentication-->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 	</dependencies>
 </project>
