@@ -10,11 +10,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import jakarta.ws.rs.core.Application;
 import tukano.impl.Token;
-
-import tukano.srv.Authentication;
-import tukano.srv.ControlResource;
-import tukano.srv.auth.RequestCookiesCleanupFilter;
-import tukano.srv.auth.RequestCookiesFilter;
 import utils.IP;
 import utils.Props;
 
@@ -43,12 +38,6 @@ public class TukanoRestServer extends Application{
 		resources.add(RestUsersResource.class);
 		resources.add(RestShortsResource.class);
 
-		//Authentication
-		resources.add(ControlResource.class);
-		resources.add(RequestCookiesFilter.class);
-		resources.add(RequestCookiesCleanupFilter.class);
-		resources.add(Authentication.class);
-
 		Props.load("azurekeys-region.props");
 
 		Token.setSecret("secret");
@@ -73,12 +62,6 @@ public class TukanoRestServer extends Application{
 		config.register(RestBlobsResource.class);
 		config.register(RestUsersResource.class);
 		config.register(RestShortsResource.class);
-
-		//Authentication
-		config.register(ControlResource.class);
-		config.register(RequestCookiesFilter.class);
-		config.register(RequestCookiesCleanupFilter.class);
-		config.register(Authentication.class);
 
 		JdkHttpServerFactory.createHttpServer( URI.create(serverURI.replace(IP.hostname(), INETADDR_ANY)), config);
 

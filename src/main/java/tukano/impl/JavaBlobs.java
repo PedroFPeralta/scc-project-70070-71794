@@ -12,7 +12,6 @@ import tukano.impl.rest.TukanoRestServer;
 import tukano.impl.storage.BlobStorage;
 import tukano.impl.storage.BlobStorageImpl;
 import tukano.impl.storage.FilesystemStorage;
-import tukano.srv.Authentication;
 import utils.Hash;
 import utils.Hex;
 
@@ -23,8 +22,6 @@ public class JavaBlobs implements Blobs {
 
 	public String baseURI;
 	private BlobStorage storage;
-
-	private static final String ADMIN = "pedro";
 	
 	synchronized public static Blobs getInstance() {
 		if( instance == null )
@@ -40,7 +37,6 @@ public class JavaBlobs implements Blobs {
 	
 	@Override
 	public Result<Void> upload(String blobId, byte[] bytes, String token) {
-		var session = Authentication.isLoggedIn();
 		Log.info(() -> format("upload : blobId = %s, sha256 = %s, token = %s\n", blobId, Hex.of(Hash.sha256(bytes)), token));
 
 //		if (!validBlobId(blobId, token))
@@ -51,8 +47,6 @@ public class JavaBlobs implements Blobs {
 
 	@Override
 	public Result<byte[]> download(String blobId, String token) {
-		var session = Authentication.isLoggedIn();
-
 		Log.info(() -> format("download : blobId = %s, token=%s\n", blobId, token));
 
 //		if( ! validBlobId( blobId, token ) )
@@ -63,8 +57,6 @@ public class JavaBlobs implements Blobs {
 
 	@Override
 	public Result<Void> delete(String blobId, String token) {
-		Authentication.validateSession(ADMIN);
-
 		Log.info(() -> format("delete : blobId = %s, token=%s\n", blobId, token));
 	
 //		if( ! validBlobId( blobId, token ) )
@@ -75,8 +67,6 @@ public class JavaBlobs implements Blobs {
 	
 	@Override
 	public Result<Void> deleteAllBlobs(String userId, String token) {
-		Authentication.validateSession(ADMIN);
-
 		Log.info(() -> format("deleteAllBlobs : userId = %s, token=%s\n", userId, token));
 
 //		if( ! Token.isValid( token, userId ) )

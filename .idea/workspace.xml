@@ -5,55 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d5d5496-c3f0-4102-848e-50c7eaf83647" name="Changes" comment="Shorts - Get Secrets from file">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/Authentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/ControlResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/FakeRedisLayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/auth/RequestCookies.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/auth/RequestCookiesCleanupFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tukano/srv/auth/RequestCookiesFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/JavaBlobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tukano/impl/rest/TukanoRestServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/azurekeys-region.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/azurekeys-region.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/ErrorResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/ErrorResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/OkResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/OkResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Result$ErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Result$ErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/Short.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/Short.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/api/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/api/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaBlobs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaBlobs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaShorts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/JavaUsers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/data/Following.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/data/Following.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/data/Likes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/data/Likes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestBlobsResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestBlobsResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestShortsResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestShortsResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestUsersResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/RestUsersResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/TukanoRestServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/CustomLoggingFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/CustomLoggingFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/GenericExceptionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/rest/utils/GenericExceptionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tukano/impl/storage/FilesystemStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tukano/impl/storage/FilesystemStorage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Args.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Args.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Hash.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Hash.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Hex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Hex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Hibernate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Hibernate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/IO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/IO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/IP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/IP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/JSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/JSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Props.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Props.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Queues.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Queues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Random.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Random.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/Sleep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Sleep.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TLS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TryCatch$ThrowableSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TryCatch$ThrowableSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TryCatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TryCatch.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,32 +42,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/pedri/IdeaProjects/scc-project2-70070-71794/src/main/java/tukano/srv",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pedri/Documents/Escola/Mestrado/SCC/Projeto/scc-project-70070-71794&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\pedri\IdeaProjects\scc-project2-70070-71794\src\main\java\tukano\srv" />
-      <recent name="C:\Users\pedri\IdeaProjects\scc-project2-70070-71794\src\main\java\tukano\impl\authentication" />
-      <recent name="C:\Users\pedri\IdeaProjects\scc-project2-70070-71794\src\main\resources" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
@@ -145,17 +91,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -171,7 +106,6 @@
       <workItem from="1729877942896" duration="3700000" />
       <workItem from="1730650242794" duration="20000" />
       <workItem from="1730650525495" duration="2137000" />
-      <workItem from="1732626631750" duration="8826000" />
     </task>
     <task id="LOCAL-00001" summary="configs">
       <created>1729257288094</created>
