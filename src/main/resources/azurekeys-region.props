@@ -1,5 +1,5 @@
 # Date : 10/14/24, 10:16 AM
-BlobStoreConnection=DefaultEndpointsProtocol=https;AccountName=sto70070northeurope;AccountKey=9nXhiIO/5itEDWT7Xpdv5i9YYU5T255/C+NJUrXIXf/k9rfzB3gCZDabo4HdlhGPxTjpB0JtKcPJ+AStnN7vpg==;EndpointSuffix=core.windows.net
-COSMOSDB_KEY=u9d2bwdJtw12C6mRwtjvWBw0XeSxb41NqUPXON6mKir7aq4phn2ukBshRHn2dF2i5GQoTYhT8KjAACDb0j612g==
-COSMOSDB_URL=https://cosmos70070northeurope.documents.azure.com:443/
-COSMOSDB_DATABASE=cosmosdb70070
+DefaultEndpointsProtocol=https;AccountName=sto70070northeurope;AccountKey=2He3bMIWVVop11gcJMCWJuK4eFxuitrk8Y21PlQyb5F7wiXaOkcveD/qlBcr9u1ICITnySFQCIYm+AStgRBdbg==;EndpointSuffix=core.windows.net
+COSMOSDB_KEY=4f1lqna9oWP80AIKk8nT0P9Au3nzMkuM0JbF9n1gMEk152Qo2DtNViDAgw8bijLYyXHcF7ZAVFYtACDbGKiCAw==
+COSMOSDB_URL=https://images.documents.azure.com/
+COSMOSDB_DATABASE=images
