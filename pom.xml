@@ -80,7 +80,7 @@
 			    <configuration>
 			        <schemaVersion>v2</schemaVersion>
 			        <resourceGroup>rg70070-northeurope</resourceGroup>
-			        <appName>app7007071794northeurope</appName>
+			        <appName>tukano-backend-7007071794</appName>
 			        <pricingTier>F1</pricingTier>
 			        <region>northeurope</region>
 			        <runtime>
@@ -100,6 +100,7 @@
 			        </deployment>
 			    </configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 	<dependencies>
@@ -208,5 +209,6 @@
 			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 </project>

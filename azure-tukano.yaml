@@ -1,0 +1,99 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cosmosdb
+data: 
+  COSMOSDB_KEY: "u9d2bwdJtw12C6mRwtjvWBw0XeSxb41NqUPXON6mKir7aq4phn2ukBshRHn2dF2i5GQoTYhT8KjAACDb0j612g"
+  COSMOSDB_URL: "https://cosmos70070northeurope.documents.azure.com:443/"
+  COSMOSDB_DATABASE: "cosmosdb70070"
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: tukano-service
+  labels:
+    app: tukano
+spec:
+  replicas: 1
+  selector:   
+    matchLabels:
+      app: tukano-service
+    template: 
+      metadata:
+        labels:
+          app: tukano-service
+      spec:
+        containers:
+        - name: blobs-service
+          image: tukano/blobs-service:latest       
+          ports:
+          - containerPort: 3000
+          env:
+        - name: COSMOSDB_KEY  
+          valueFrom:
+            configMapKeyRef:
+              name: cosmosdb
+              key: COSMOSDB_KEY
+        - name: COSMOSDB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: cosmosdb
+              key: COSMOSDB_URL
+        - name: COSMOSDB_DATABASE  
+          valueFrom:
+            configMapKeyRef:
+              name: cosmosdb
+              key: COSMOSDB_DATABASE
+        - name: COSMOSDB_CONTAINER
+          value: "blobs"  
+        
+        - name: users-service
+          image: tukano/users-service:latest       
+          ports:
+          - containerPort: 3001
+          env:
+          - name: COSMOSDB_KEY  
+            valueFrom:
+              configMapKeyRef:
+                name: cosmosdb
+                key: COSMOSDB_KEY
+          - name: COSMOSDB_URL
+            valueFrom:
+              configMapKeyRef:
+                name: cosmosdb
+                key: COSMOSDB_URL
+          - name: COSMOSDB_DATABASE  
+            valueFrom:
+              configMapKeyRef:
+                name: cosmosdb
+                key: COSMOSDB_DATABASE
+          - name: COSMOSDB_CONTAINER
+            value: "users"
+          
+          - name: shorts-service
+          image: tukano/shorts-service:latest       
+          ports:
+          - containerPort: 3002
+          env:
+          - name: COSMOSDB_KEY  
+            valueFrom:
+              configMapKeyRef:
+                name: cosmosdb
+                key: COSMOSDB_KEY
+          - name: COSMOSDB_URL
+            valueFrom:
+              configMapKeyRef:
+                name: cosmosdb
+                key: COSMOSDB_URL
+          - name: COSMOSDB_DATABASE  
+            valueFrom:
+              configMapKeyRef:
+                name: cosmosdb
+                key: COSMOSDB_DATABASE
+          - name: COSMOSDB_CONTAINER
+            value: "shorts"        
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: 
