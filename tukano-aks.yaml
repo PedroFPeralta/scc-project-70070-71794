@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users-service
+  template:
+    metadata:
+      labels:
+        app: users-service  
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: users-service
+        image: tim0ns/users-service:latest    
+        ports:
+        - containerPort: 8080  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-service
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: users-service
+---    
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shorts-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shorts-service
+  template:
+    metadata:
+      labels:
+        app: shorts-service  
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: shorts-service
+        image: tim0ns/shorts-service:latest    
+        ports:
+        - containerPort: 8080  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shorts-service
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: shorts-service       
+---    
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blobs-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blobs-service
+  template:
+    metadata:
+      labels:
+        app: blobs-service  
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: blobs-service
+        image: tim0ns/blobs-service:latest    
+        ports:
+        - containerPort: 8080  
+        volumeMounts:
+        - mountPath: "/usr/local/tomcat/pv-blob"
+          name: pv-blob
+      volumes:
+      - name: pv-blob
+        persistentVolumeClaim:
+          claimName: tukano-pvc    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blobs-service
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    nodePort: 30080
+  selector:
+    app: blobs-service       
