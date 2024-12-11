@@ -1,5 +1,8 @@
 package tukano.impl.storage;
 
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.function.Consumer;
 
@@ -23,7 +26,7 @@ import utils.Hash;
 public class BlobStorageImpl implements BlobStorage {
 
     // TODO: check if this contant need to be from a external file
-    private static final String BLOBS_CONTAINER_NAME = "shorts";
+    //private static final String BLOBS_CONTAINER_NAME = "shorts";
     private static final String BLOB_PROPERTY_NAME = "BlobStoreConnection";
 
     // TODO: pass this secret to external file
@@ -39,6 +42,44 @@ public class BlobStorageImpl implements BlobStorage {
             return error(BAD_REQUEST);
         }
 
+        try {
+            Path BlobPath = Paths.get(storageConnectionString, path);
+             // Validate if file(blob) exists in the storage
+            if (Files.exists(BlobPath)){
+
+                byte[] properties = Files.readAllBytes(BlobPath);
+                byte[] hashBytes = Hash.sha256(bytes);
+                byte[] propertiesHash = Hash.sha256(properties);
+
+                String newContentHash = Base64.getEncoder().encodeToString(hashBytes);
+                String existingContentHash = Base64.getEncoder().encodeToString(propertiesHash);
+
+                // Verify if both have the same content hash
+                if (newContentHash.equals(existingContentHash)) {
+                    System.out.println("Blob already exists with the same content.");
+                    return error(CONFLICT);
+                } else {
+                    return error(CONFLICT);
+                }
+            }
+            Files.createDirectories(BlobPath.getParent());
+            Files.write(BlobPath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            
+            System.out.println("Blob upload successful");
+
+            return ok();
+            
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return error(NOT_FOUND);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return error(INTERNAL_ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(INTERNAL_ERROR);
+        }
+        /*
         try {
             BinaryData data = BinaryData.fromBytes(bytes);
             // Get container client
@@ -85,13 +126,31 @@ public class BlobStorageImpl implements BlobStorage {
             e.printStackTrace();
             return error(INTERNAL_ERROR);
         }
+        */
+
     }
 
     public Result<Void> delete(String path) {
         if (path == null || path.length() == 0) {
             return error(BAD_REQUEST);
         }
+        try {
+            // Get client file (blob)
+            Path BlobPath = Paths.get(storageConnectionString, path);
 
+            // Validate if blob exists
+            if (!Files.exists(BlobPath)) {
+                return error(NOT_FOUND);
+            }
+
+            Files.delete(BlobPath);
+
+            return ok();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(INTERNAL_ERROR);
+        }
+        /*
         try {
             // Get container client
             BlobContainerClient containerClient = new BlobContainerClientBuilder()
@@ -115,6 +174,7 @@ public class BlobStorageImpl implements BlobStorage {
             e.printStackTrace();
             return error(INTERNAL_ERROR);
         }
+        */    
     }
 
     public Result<byte[]> read(String path) {
@@ -123,6 +183,24 @@ public class BlobStorageImpl implements BlobStorage {
         }
 
         try {
+        
+            // Get client file (blob)
+            Path BlobPath = Paths.get(storageConnectionString, path);
+
+            if (!Files.exists(BlobPath)){
+                return error(NOT_FOUND);
+            }
+
+            // Save contents as a byte array
+            byte[] data = Files.readAllBytes(BlobPath);
+
+            // Verify if exist any content
+            if (data == null || data.length == 0) {
+                return error(NOT_FOUND); 
+            }
+
+            return ok(data);
+            /*
             // Get container client
             BlobContainerClient containerClient = new BlobContainerClientBuilder()
                     .connectionString(storageConnectionString)
@@ -151,7 +229,11 @@ public class BlobStorageImpl implements BlobStorage {
         } catch (Exception e) {
             e.printStackTrace();
             return error(INTERNAL_ERROR);
-        }
+        } */
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(INTERNAL_ERROR);
+        } 
     }
 
     public Result<Void> read(String path, Consumer<byte[]> sink) {
@@ -160,7 +242,26 @@ public class BlobStorageImpl implements BlobStorage {
         }
 
         try {
-            // Get container client
+            // Get client file (blob)
+            Path BlobPath = Paths.get(storageConnectionString, path);
+
+            if (!Files.exists(BlobPath)) {
+                return error(NOT_FOUND);
+            }
+
+            // Save contents as a byte array
+            byte[] data = Files.readAllBytes(BlobPath);
+
+            // Verify if exist any content
+            if (data == null || data.length == 0) {
+                return error(NOT_FOUND); 
+            }
+
+            sink.accept(data);
+
+            return ok();
+
+            /*// Get container client
             BlobContainerClient containerClient = new BlobContainerClientBuilder()
                     .connectionString(storageConnectionString)
                     .containerName(BLOBS_CONTAINER_NAME)
@@ -186,7 +287,10 @@ public class BlobStorageImpl implements BlobStorage {
             sink.accept(arr);
 
             return ok();
-        } catch (Exception e) {
+        */
+        } 
+            
+        catch (Exception e) {
             e.printStackTrace();
             return error(INTERNAL_ERROR);
         }

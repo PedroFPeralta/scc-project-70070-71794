@@ -89,16 +89,24 @@ spec:
         image: tim0ns/blobs-service:latest    
         ports:
         - containerPort: 8080  
+        volumeMounts:
+        - mountPath: "/usr/local/tomcat/pv-blob"
+          name: pv-blob
+      volumes:
+      - name: pv-blob
+        persistentVolumeClaim:
+          claimName: tukano-pvc    
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: blobs-service
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: http
     port: 8080
     targetPort: 8080
+    nodePort: 30080
   selector:
     app: blobs-service       
