@@ -21,9 +21,9 @@ spec:
         - name: POSTGRES_DB
           value: "mydb"
         - name: POSTGRES_USER
-          value: "user"
+          value: "citus"
         - name: POSTGRES_PASSWORD
-          value: "password"
+          value: "admin-1234"
 
 ---
 apiVersion: v1

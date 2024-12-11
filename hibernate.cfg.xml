@@ -3,7 +3,7 @@
 	<session-factory>
 		<!-- JDBC Database connection settings -->
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
- 		<property name="hibernate.connection.url">jdbc:postgresql://c-tukano.gxwfxcq2g5s76v.postgres.cosmos.azure.com:5432/tukano-backend?user=citus&password=admin-1234&sslmode=require</property>
+ 		<property name="hibernate.connection.url">jdbc:postgresql://postgres-service:5432/tukano</property>
 		<property name="hibernate.connection.username">citus</property>
 		<property name="hibernate.connection.password">admin-1234</property>
 		<!-- JDBC connection pool settings ... using built-in test pool -->
