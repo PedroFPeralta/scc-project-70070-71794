@@ -11,4 +11,4 @@ spec:
     - ReadWriteOnce
   storageClassName: tukano-storage
   hostPath:
-    path: /data/my-dynamic-pv
+    path: /data/tukano-pv
