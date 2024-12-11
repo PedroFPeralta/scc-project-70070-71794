@@ -1,5 +1,6 @@
 # Date : 10/14/24, 10:16 AM
-DefaultEndpointsProtocol=https;AccountName=sto70070northeurope;AccountKey=2He3bMIWVVop11gcJMCWJuK4eFxuitrk8Y21PlQyb5F7wiXaOkcveD/qlBcr9u1ICITnySFQCIYm+AStgRBdbg==;EndpointSuffix=core.windows.net
+#BlobStoreConnection=DefaultEndpointsProtocol=https;AccountName=sto70070northeurope;AccountKey=2He3bMIWVVop11gcJMCWJuK4eFxuitrk8Y21PlQyb5F7wiXaOkcveD/qlBcr9u1ICITnySFQCIYm+AStgRBdbg==;EndpointSuffix=core.windows.net
+BlobStoreConnection=/usr/local/tomcat/pv-blob
 COSMOSDB_KEY=4f1lqna9oWP80AIKk8nT0P9Au3nzMkuM0JbF9n1gMEk152Qo2DtNViDAgw8bijLYyXHcF7ZAVFYtACDbGKiCAw==
 COSMOSDB_URL=https://images.documents.azure.com/
 COSMOSDB_DATABASE=images
