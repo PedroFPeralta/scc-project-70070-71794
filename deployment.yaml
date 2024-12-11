@@ -28,7 +28,7 @@ spec:
               memory: 256Mi
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgres-volume
+              name: tukano-storage
       initContainers:
         - name: wait-for-db
           image: busybox
@@ -41,6 +41,6 @@ spec:
               cpu: 75m
               memory: 128Mi
       volumes:
-        - name: postgres-volume
+        - name: tukano-storage
           persistentVolumeClaim:
             claimName: tukano-pvc
