@@ -225,5 +225,18 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.2.0.Final</version> <!-- Usar versão compatível com o Hibernate -->
 		</dependency>
+
+
+		<!--		Authentication-->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 </project>
