@@ -1,5 +1,6 @@
 package tukano.api;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -7,15 +8,19 @@ import tukano.impl.Token;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "\"user\"")
 public class User {
 	
 	@Id
 	private String id;
 
+	@Column(name = "\"userId\"")
 	private String userId;
+	@Column(name = "\"pwd\"")
 	private String pwd;
-	private String email;	
+	@Column(name = "\"email\"")
+	private String email;
+	@Column(name = "\"displayName\"")
 	private String displayName;
 
 	public User() {}

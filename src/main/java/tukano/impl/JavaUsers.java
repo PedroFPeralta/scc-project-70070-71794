@@ -41,21 +41,9 @@ public class JavaUsers implements Users {
 		Log.info(() -> format("createUser : %s\n", user));
 
 		if( badUserInfo( user ) )
-				return error(BAD_REQUEST);
-		/*
-		try (Jedis jedis = RedisCache.getCachePool().getResource()){
-				var key = "users: " + user.getUserId();
-				var value = JSON.encode(user);
-				jedis.set(key, value);
-				//jedis.expire(key, 3600);
-			}		
-		return errorOrValue( DB.insertOne( user), user.getUserId() );
-		*/
-		if(usersDB.containsKey(user.getUserId()))
-			return error(BAD_REQUEST); 
+			return error(BAD_REQUEST);
 
-		usersDB.put(user.getDisplayName(), user);
-		return ok(user.getUserId());
+		return errorOrValue( DB.insertOne( user), user.getUserId() );
 		
 	}
 
@@ -65,22 +53,8 @@ public class JavaUsers implements Users {
 
 		if (userId == null)
 			return error(BAD_REQUEST);
-		
-		/*try (Jedis jedis = RedisCache.getCachePool().getResource()){
-			var key = "users: " + userId;
-			var user = jedis.get(key);
 
-			if (user != null){
-				return validatedUserOrError(Result.ok(JSON.decode(user, User.class)), pwd);
-			}
-		}		
-		*/
-		User user = usersDB.get(userId);
-		if (user == null) 
-			return error(FORBIDDEN);		
-		
-		return validatedUserOrError(Result.ok(user), pwd);	
-		//return validatedUserOrError( DB.getOne( userId, User.class), pwd);
+		return validatedUserOrError( DB.getOne( userId, User.class), pwd);
 	}
 
 	@Override
@@ -90,11 +64,7 @@ public class JavaUsers implements Users {
 		if (badUpdateUserInfo(userId, pwd, other))
 			return error(BAD_REQUEST);
 
-		return errorOrResult(validatedUserOrError(Result.ok(usersDB.get(userId)), pwd), user -> {
-			usersDB.put(userId, user.updateFrom(other)); 
-			return ok(user); 
-		});	
-		//return errorOrResult( validatedUserOrError(DB.getOne( userId, User.class), pwd), user -> DB.updateOne( user.updateFrom(other)));
+		return errorOrResult( validatedUserOrError(DB.getOne( userId, User.class), pwd), user -> DB.updateOne( user.updateFrom(other)));
 	}
 
 	@Override
@@ -111,10 +81,8 @@ public class JavaUsers implements Users {
 				JavaShorts.getInstance().deleteAllShorts(userId, pwd, Token.get(userId));
 				JavaBlobs.getInstance().deleteAllBlobs(userId, Token.get(userId));
 			}).start();
-			
-			//return DB.deleteOne( user);
-			usersDB.remove(userId);
-			return ok(user);
+
+			return DB.deleteOne( user);
 		});
 	}
 
@@ -122,25 +90,12 @@ public class JavaUsers implements Users {
 	public Result<List<User>> searchUsers(String pattern) {
 		Log.info( () -> format("searchUsers : patterns = %s\n", pattern));
 
-		/*var query = format("SELECT * FROM User u WHERE UPPER(u.userId) LIKE '%%%s%%'", pattern.toUpperCase());
+		var query = format("SELECT * FROM User u WHERE UPPER(u.userId) LIKE '%%%s%%'", pattern.toUpperCase());
 		var hits = DB.sql(query, User.class)
 				.stream()
 				.map(User::copyWithoutPassword)
 				.toList();
-		*/
-		//if (pattern == null || pattern.isBlank())
-		//	return error(BAD_REQUEST);
-		var hits = (pattern == null || pattern.isBlank())
-			? usersDB.values()
-					 .stream()
-					 .map(User::copyWithoutPassword)
-					 .toList()
-			: usersDB.values()
-					.stream()
-					.filter(user -> user.getUserId().toUpperCase().contains(pattern.toUpperCase()))
-					.map(User::copyWithoutPassword)
-					.toList();
-			
+
 		return ok(hits);
 	}
 
